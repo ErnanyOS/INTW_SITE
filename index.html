@@ -1,1 +1,107 @@
-<h1>Hello</h1>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Tipos de Circuito</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #f2f2f2, #e6f0ff);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      margin-bottom: 40px;
+      color: #333;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 30px;
+      width: 100%;
+      max-width: 1000px;
+    }
+
+    .circuito {
+      background-color: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      padding: 30px 20px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      cursor: default;
+      user-select: none;
+    }
+
+    .circuito:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .circuito:active {
+      animation: pulse 0.3s ease;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    .icon {
+      width: 60px;
+      height: 60px;
+      background-color: #4f8cff;
+      border-radius: 50%;
+      margin: 0 auto 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .nome {
+      font-size: 1rem;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Tipos de Circuito</h1>
+  <div class="grid">
+    <div class="circuito">
+      <div class="icon">555</div>
+      <div class="nome">Multivibrador Astável</div>
+    </div>
+    <div class="circuito">
+      <div class="icon">555</div>
+      <div class="nome">Multivibrador Monostável</div>
+    </div>
+    <div class="circuito">
+      <div class="icon">⚖️</div>
+      <div class="nome">Ponte de Wheatstone</div>
+    </div>
+    <div class="circuito">
+      <div class="icon">⚖️</div>
+      <div class="nome">Ponte Dupla de Kelvin</div>
+    </div>
+    <div class="circuito">
+      <div class="icon">⏬</div>
+      <div class="nome">Filtro Passa-Baixa</div>
+    </div>
+    <div class="circuito">
+      <div class="icon">⏫</div>
+      <div class="nome">Filtro Passa-Alta</div>
+    </div>
+  </div>
+
+</body>
+</html>
