@@ -26,10 +26,10 @@
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr); /* 2 colunas grandes */
+      grid-template-columns: repeat(2, 1fr);
       gap: 40px;
       padding: 50px 40px;
-      max-width: 1200px; /* aumentei para ocupar mais largura */
+      max-width: 1300px;
       margin: auto;
     }
 
@@ -38,14 +38,14 @@
       border-radius: 20px;
       box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
       text-align: center;
-      padding: 40px 30px; /* mais padding para dar espaço */
+      padding: 50px 30px;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       cursor: default;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      min-height: 280px; /* altura mínima maior */
+      min-height: 320px;
     }
 
     .circuito:hover {
@@ -64,14 +64,14 @@
     }
 
     .icon img {
-      width: 140px;  /* aumentei o tamanho da imagem */
-      height: 140px;
+      width: 200px;
+      height: 200px;
       object-fit: contain;
-      margin-bottom: 20px;
+      margin-bottom: 25px;
     }
 
     .nome {
-      font-size: 1.3rem;
+      font-size: 1.4rem;
       font-weight: 700;
       color: #00796b;
     }
@@ -84,27 +84,23 @@
       color: #555;
     }
 
-    /* Responsividade: 1 coluna em telas pequenas */
-    @media (max-width: 720px) {
+    @media (max-width: 800px) {
       .grid {
         grid-template-columns: 1fr;
-        max-width: 90%;
-        padding: 30px 20px;
-      }
-
-      .circuito {
-        min-height: 240px;
         padding: 30px 20px;
       }
 
       .icon img {
-        width: 120px;
-        height: 120px;
-        margin-bottom: 15px;
+        width: 160px;
+        height: 160px;
       }
 
       .nome {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
+      }
+
+      .circuito {
+        min-height: 280px;
       }
     }
   </style>
