@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Eletrônica do Seu Zé</title>
   <style>
     body {
@@ -26,31 +26,26 @@
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
       gap: 40px;
-      padding: 50px 40px;
-      max-width: 1300px;
+      padding: 40px 30px;
+      max-width: 1600px;
       margin: auto;
     }
 
     .circuito {
       background-color: #ffffff;
       border-radius: 20px;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
       text-align: center;
-      padding: 50px 30px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      padding: 30px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
       cursor: default;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 320px;
     }
 
     .circuito:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.2);
+      transform: translateY(-6px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
     }
 
     .circuito:active {
@@ -64,15 +59,16 @@
     }
 
     .icon img {
-      width: 200px;
-      height: 200px;
+      width: 100%;
+      max-width: 350px;
+      height: auto;
       object-fit: contain;
-      margin-bottom: 25px;
+      margin-bottom: 20px;
     }
 
     .nome {
-      font-size: 1.4rem;
-      font-weight: 700;
+      font-size: 1.2rem;
+      font-weight: bold;
       color: #00796b;
     }
 
@@ -82,26 +78,6 @@
       background: #eeeeee;
       font-size: 0.9rem;
       color: #555;
-    }
-
-    @media (max-width: 800px) {
-      .grid {
-        grid-template-columns: 1fr;
-        padding: 30px 20px;
-      }
-
-      .icon img {
-        width: 160px;
-        height: 160px;
-      }
-
-      .nome {
-        font-size: 1.2rem;
-      }
-
-      .circuito {
-        min-height: 280px;
-      }
     }
   </style>
 </head>
@@ -113,72 +89,72 @@
 
   <main class="grid">
     <div class="circuito">
-      <div class="icon"><img src="imagens/astavel_555.png" alt="Astável 555" /></div>
+      <div class="icon"><img src="imagens/astavel_555.png" alt="Astável 555"></div>
       <div class="nome">Multivibrador Astável (555)</div>
     </div>
 
     <div class="circuito">
-      <div class="icon"><img src="imagens/monostavel_555.png" alt="Monostável 555" /></div>
+      <div class="icon"><img src="imagens/monostavel_555.png" alt="Monostável 555"></div>
       <div class="nome">Multivibrador Monostável (555)</div>
     </div>
 
     <div class="circuito">
-      <div class="icon"><img src="imagens/bistavel_555.png" alt="Bistável 555" /></div>
+      <div class="icon"><img src="imagens/bistavel_555.png" alt="Bistável 555"></div>
       <div class="nome">Multivibrador Bistável (555)</div>
     </div>
 
     <div class="circuito">
-      <div class="icon"><img src="imagens/wheatstone.png" alt="Ponte Wheatstone" /></div>
+      <div class="icon"><img src="imagens/wheatstone.png" alt="Ponte Wheatstone"></div>
       <div class="nome">Ponte de Wheatstone</div>
     </div>
 
     <div class="circuito">
-      <div class="icon"><img src="imagens/ponte_kelvin.jpg" alt="Ponte Kelvin" /></div>
+      <div class="icon"><img src="imagens/ponte_kelvin.jpg" alt="Ponte Kelvin"></div>
       <div class="nome">Ponte Dupla de Kelvin</div>
     </div>
 
     <div class="circuito">
-      <div class="icon"><img src="imagens/passa_baixa.png" alt="Filtro Passa-Baixa" /></div>
+      <div class="icon"><img src="imagens/passa_baixa.png" alt="Filtro Passa-Baixa"></div>
       <div class="nome">Filtro Passa-Baixa</div>
     </div>
 
     <div class="circuito">
-      <div class="icon"><img src="imagens/passa_alta.png" alt="Filtro Passa-Alta" /></div>
+      <div class="icon"><img src="imagens/passa_alta.png" alt="Filtro Passa-Alta"></div>
       <div class="nome">Filtro Passa-Alta</div>
     </div>
 
     <div class="circuito">
-      <div class="icon"><img src="imagens/passa_banda.png" alt="Filtro Passa-Banda" /></div>
+      <div class="icon"><img src="imagens/passa_banda.png" alt="Filtro Passa-Banda"></div>
       <div class="nome">Filtro Passa-Banda</div>
     </div>
 
     <div class="circuito">
-      <div class="icon"><img src="imagens/notch.png" alt="Filtro Notch" /></div>
+      <div class="icon"><img src="imagens/notch.png" alt="Filtro Notch"></div>
       <div class="nome">Filtro Notch (Rejeita-Banda)</div>
     </div>
 
     <div class="circuito">
-      <div class="icon"><img src="imagens/oscilador_relaxacao.png" alt="Oscilador de Relaxação" /></div>
+      <div class="icon"><img src="imagens/oscilador_relaxacao.png" alt="Oscilador de Relaxação"></div>
       <div class="nome">Oscilador de Relaxação</div>
     </div>
 
     <div class="circuito">
-      <div class="icon"><img src="imagens/chua.png" alt="Circuito de Chua" /></div>
+      <div class="icon"><img src="imagens/chua.png" alt="Circuito de Chua"></div>
       <div class="nome">Circuito de Chua (Caótico)</div>
     </div>
 
     <div class="circuito">
-      <div class="icon"><img src="imagens/lm317.png" alt="Fonte com LM317" /></div>
+      <div class="icon"><img src="imagens/lm317.png" alt="Fonte com LM317"></div>
       <div class="nome">Fonte Regulada com LM317</div>
     </div>
 
     <div class="circuito">
-      <div class="icon"><img src="imagens/amp_inv.png" alt="Amp Op Inversor" /></div>
+      <div class="icon"><img src="imagens/amp_inv.png" alt="Amp Op Inversor"></div>
       <div class="nome">Amp Op Inversor</div>
     </div>
 
     <div class="circuito">
-      <div class="icon"><img src="imagens/amp_nao_inv.png" alt="Amp Op Não Inversor" /></div>
+      <div class="icon"><img src="imagens/amp_nao_inv.png" alt="Amp Op Não Inversor"></div>
       <div class="nome">Amp Op Não Inversor</div>
     </div>
   </main>
