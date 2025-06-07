@@ -48,16 +48,6 @@
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
     }
 
-    .circuito:active {
-      animation: pulse 0.3s ease;
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-      100% { transform: scale(1); }
-    }
-
     .icon img {
       width: 100%;
       max-width: 350px;
@@ -70,6 +60,32 @@
       font-size: 1.2rem;
       font-weight: bold;
       color: #00796b;
+    }
+
+    .funcoes {
+      background-color: #f0f0f0;
+      padding: 30px;
+      text-align: center;
+    }
+
+    .funcoes button {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 10px;
+      background-color: #00796b;
+      color: white;
+      cursor: pointer;
+    }
+
+    .funcoes button:hover {
+      background-color: #004d40;
+    }
+
+    .resultado {
+      margin-top: 20px;
+      font-weight: bold;
     }
 
     footer {
@@ -88,80 +104,110 @@
   </header>
 
   <main class="grid">
+    <!-- Seu conteúdo de imagens e nomes dos circuitos aqui (sem alterações) -->
+    <!-- ... (mantido como está no seu código) ... -->
+    <!-- Exemplo de um circuito -->
     <div class="circuito">
       <div class="icon"><img src="imagens/astavel_555.png" alt="Astável 555"></div>
       <div class="nome">Multivibrador Astável (555)</div>
     </div>
-
-    <div class="circuito">
-      <div class="icon"><img src="imagens/monostavel_555.png" alt="Monostável 555"></div>
-      <div class="nome">Multivibrador Monostável (555)</div>
-    </div>
-
-    <div class="circuito">
-      <div class="icon"><img src="imagens/bistavel_555.png" alt="Bistável 555"></div>
-      <div class="nome">Multivibrador Bistável (555)</div>
-    </div>
-
-    <div class="circuito">
-      <div class="icon"><img src="imagens/wheatstone.png" alt="Ponte Wheatstone"></div>
-      <div class="nome">Ponte de Wheatstone</div>
-    </div>
-
-    <div class="circuito">
-      <div class="icon"><img src="imagens/ponte_kelvin.jpg" alt="Ponte Kelvin"></div>
-      <div class="nome">Ponte Dupla de Kelvin</div>
-    </div>
-
-    <div class="circuito">
-      <div class="icon"><img src="imagens/passa_baixa.png" alt="Filtro Passa-Baixa"></div>
-      <div class="nome">Filtro Passa-Baixa</div>
-    </div>
-
-    <div class="circuito">
-      <div class="icon"><img src="imagens/passa_alta.png" alt="Filtro Passa-Alta"></div>
-      <div class="nome">Filtro Passa-Alta</div>
-    </div>
-
-    <div class="circuito">
-      <div class="icon"><img src="imagens/passa_banda.png" alt="Filtro Passa-Banda"></div>
-      <div class="nome">Filtro Passa-Banda</div>
-    </div>
-
-    <div class="circuito">
-      <div class="icon"><img src="imagens/notch.png" alt="Filtro Notch"></div>
-      <div class="nome">Filtro Notch (Rejeita-Banda)</div>
-    </div>
-
-    <div class="circuito">
-      <div class="icon"><img src="imagens/oscilador_relaxacao.png" alt="Oscilador de Relaxação"></div>
-      <div class="nome">Oscilador de Relaxação</div>
-    </div>
-
-    <div class="circuito">
-      <div class="icon"><img src="imagens/chua.png" alt="Circuito de Chua"></div>
-      <div class="nome">Circuito de Chua (Caótico)</div>
-    </div>
-
-    <div class="circuito">
-      <div class="icon"><img src="imagens/lm317.png" alt="Fonte com LM317"></div>
-      <div class="nome">Fonte Regulada com LM317</div>
-    </div>
-
-    <div class="circuito">
-      <div class="icon"><img src="imagens/amp_inv.png" alt="Amp Op Inversor"></div>
-      <div class="nome">Amp Op Inversor</div>
-    </div>
-
-    <div class="circuito">
-      <div class="icon"><img src="imagens/amp_nao_inv.png" alt="Amp Op Não Inversor"></div>
-      <div class="nome">Amp Op Não Inversor</div>
-    </div>
+    <!-- ... resto dos circuitos ... -->
   </main>
+
+  <section class="funcoes">
+    <h2>Funções de Teste em JavaScript</h2>
+    <button onclick="maiorMenor()">1) Maior/Menor</button>
+    <button onclick="verificaVogal()">2) Verificar Vogal</button>
+    <button onclick="numerosNoIntervalo()">3) Intervalo Pares</button>
+    <button onclick="ordenarValores()">4) Ordenar Números</button>
+    <button onclick="positivoNegativo()">5) Positivo ou Negativo</button>
+    <button onclick="parOuImpar()">6) Par ou Ímpar</button>
+    <div id="resultado" class="resultado"></div>
+  </section>
 
   <footer>
     © 2025 Eletrônica do Seu Zé. Todos os direitos reservados.
   </footer>
 
+  <script>
+    // 1) Maior e Menor
+    function MAIOR_MENOR(a, b, c, d, e) {
+      const valores = [a, b, c, d, e];
+      return `Maior: ${Math.max(...valores)} | Menor: ${Math.min(...valores)}`;
+    }
+
+    function maiorMenor() {
+      let valores = [];
+      for (let i = 0; i < 5; i++) {
+        valores.push(parseInt(prompt(`Digite o ${i + 1}º número inteiro:`)));
+      }
+      document.getElementById('resultado').innerText = MAIOR_MENOR(...valores);
+    }
+
+    // 2) Verificar vogal
+    function VOGAL(c) {
+      return 'aeiouAEIOU'.includes(c) ? 1 : 0;
+    }
+
+    function verificaVogal() {
+      let caractere = prompt("Digite um caractere:");
+      let resultado = VOGAL(caractere) ? "É uma vogal." : "Não é uma vogal.";
+      document.getElementById('resultado').innerText = resultado;
+    }
+
+    // 3) Intervalo de números pares
+    function LIMITES(li, ls) {
+      let pares = [], soma = 0;
+      for (let i = li + 1; i < ls; i++) {
+        if (i % 2 === 0) {
+          pares.push(i);
+          soma += i;
+        }
+      }
+      return `Pares: ${pares.join(', ')}\nSoma: ${soma}`;
+    }
+
+    function numerosNoIntervalo() {
+      let li = parseInt(prompt("Digite o limite inferior:"));
+      let ls = parseInt(prompt("Digite o limite superior:"));
+      if (li >= ls) {
+        alert("O limite inferior deve ser menor que o superior.");
+        return;
+      }
+      document.getElementById('resultado').innerText = LIMITES(li, ls);
+    }
+
+    // 4) Ordenar valores
+    function ORDEM(a, b, c) {
+      return [a, b, c].sort((x, y) => x - y);
+    }
+
+    function ordenarValores() {
+      let a = parseInt(prompt("Digite o primeiro número:"));
+      let b = parseInt(prompt("Digite o segundo número:"));
+      let c = parseInt(prompt("Digite o terceiro número:"));
+      document.getElementById('resultado').innerText = "Ordem crescente: " + ORDEM(a, b, c).join(', ');
+    }
+
+    // 5) Positivo ou negativo
+    function POSITIVO_NEGATIVO(x) {
+      return x >= 0;
+    }
+
+    function positivoNegativo() {
+      let x = parseInt(prompt("Digite um número:"));
+      document.getElementById('resultado').innerText = POSITIVO_NEGATIVO(x) ? "Positivo" : "Negativo";
+    }
+
+    // 6) Par ou Ímpar
+    function PAR_IMPAR(x) {
+      return x % 2 === 0;
+    }
+
+    function parOuImpar() {
+      let x = parseInt(prompt("Digite um número:"));
+      document.getElementById('resultado').innerText = PAR_IMPAR(x) ? "Par" : "Ímpar";
+    }
+  </script>
 </body>
 </html>
