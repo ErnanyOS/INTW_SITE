@@ -1,40 +1,36 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contato | Eletrônica do Seu Zé</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <header>
-    Contato
-  </header>
+  <header>Entre em Contato</header>
 
-  <main>
-    <form class="form-container" id="formContato" novalidate>
-      <label for="nome">Nome Completo</label>
-      <input type="text" id="nome" name="nome" required minlength="3" placeholder="Seu nome completo" />
+  <form class="form-container" id="formContato" novalidate>
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome" name="nome" required>
 
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" required placeholder="seu@email.com" />
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
 
-      <label for="mensagem">Mensagem</label>
-      <textarea id="mensagem" name="mensagem" required minlength="10" placeholder="Escreva sua mensagem aqui..."></textarea>
+    <label for="mensagem">Mensagem:</label>
+    <textarea id="mensagem" name="mensagem" required></textarea>
 
-      <button type="submit">Enviar</button>
-    </form>
-  </main>
+    <button type="submit">Enviar</button>
+  </form>
 
   <div class="voltar-container">
-    <button onclick="location.href='index.html'">← Voltar ao Menu</button>
+    <button onclick="location.href='index.html'">&#8592; Voltar ao Menu</button>
   </div>
 
   <script>
     const form = document.getElementById('formContato');
 
-    form.addEventListener('submit', function(event) {
-      event.preventDefault();
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
 
       if (!form.checkValidity()) {
         alert('Por favor, preencha todos os campos corretamente.');
