@@ -41,6 +41,7 @@
         return false;
       }
 
+      // Regex simples e eficiente para validar email
       const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!regexEmail.test(email)) {
         alert('Por favor, insira um email válido.');
