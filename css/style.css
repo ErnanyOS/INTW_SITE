@@ -66,6 +66,7 @@ main.grid {
 }
 
 .circuito {
+  position: relative; /* para posicionar .info */
   background: white;
   border-radius: 12px;
   border: 1px solid #ddd;
@@ -77,6 +78,7 @@ main.grid {
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: hidden;
 }
 
 .circuito img {
@@ -84,17 +86,44 @@ main.grid {
   max-height: 140px;
   object-fit: contain;
   margin-bottom: 12px;
+  pointer-events: none; /* impede o hover "piscar" */
 }
 
 .circuito p {
   font-weight: 700;
   color: #222;
   font-size: 1rem;
+  margin: 0;
+  user-select: none;
 }
 
 .circuito:hover {
   transform: scale(1.05);
   box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* Camada com explicação que aparece no hover */
+.circuito .info {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(30, 144, 255, 0.9);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  text-align: center;
+  font-size: 0.95rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  border-radius: 12px;
+  user-select: text;
+}
+
+.circuito:hover .info {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 /* Botão Voltar */
@@ -130,5 +159,37 @@ main.grid {
 }
 
 .form-container label {
- 
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #444;
+}
 
+.form-container input,
+.form-container textarea {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+  resize: vertical;
+}
+
+.form-container button {
+  background-color: #1e90ff;
+  color: white;
+  padding: 12px 0;
+  font-weight: 700;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s ease;
+}
+
+.form-container button:hover {
+  background-color: #006fd6;
+}
