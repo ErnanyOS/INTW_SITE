@@ -1,1 +1,1 @@
-Algum site para alguma disciplina
+Site criado com propósito avaliativo na disciplina Introdução as Tecnologias Web
