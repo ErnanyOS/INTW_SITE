@@ -2,29 +2,33 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Contatos | Eletrônica do Seu Zé</title>
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
   <header>
-    <h1>Entre em Contato</h1>
+    <h1>Contato</h1>
   </header>
 
-  <main>
+  <main class="form-container">
     <form id="formContato" onsubmit="return validarFormulario()">
-      <label for="nome">Nome:</label><br />
-      <input type="text" id="nome" name="nome" required /><br /><br />
+      <label for="nome">Nome</label>
+      <input type="text" id="nome" name="nome" placeholder="Seu nome" required />
 
-      <label for="email">Email:</label><br />
-      <input type="email" id="email" name="email" required /><br /><br />
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="seu@email.com" required />
 
-      <label for="mensagem">Mensagem:</label><br />
-      <textarea id="mensagem" name="mensagem" rows="5" required></textarea><br /><br />
+      <label for="mensagem">Mensagem</label>
+      <textarea id="mensagem" name="mensagem" rows="5" placeholder="Escreva sua mensagem aqui..." required></textarea>
 
       <button type="submit">Enviar</button>
     </form>
   </main>
+
+  <div class="voltar-container">
+    <button onclick="location.href='index.html'">← Voltar ao Menu</button>
+  </div>
 
   <script>
     function validarFormulario() {
@@ -33,14 +37,13 @@
       const mensagem = document.getElementById('mensagem').value.trim();
 
       if (!nome || !email || !mensagem) {
-        alert('Por favor, preencha todos os campos!');
+        alert('Por favor, preencha todos os campos.');
         return false;
       }
 
-      // Validação simples de e-mail
-      const regexEmail = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
+      const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!regexEmail.test(email)) {
-        alert('Por favor, insira um email válido!');
+        alert('Por favor, insira um email válido.');
         return false;
       }
 
@@ -50,4 +53,3 @@
   </script>
 </body>
 </html>
-
