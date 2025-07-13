@@ -1,1 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Quiz | Eletrônica do Seu Zé</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    main {
+      max-width: 600px;
+      margin: 40px auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      margin-bottom: 20px;
+    }
+    .pergunta {
+      margin-bottom: 15px;
+      font-weight: bold;
+    }
+    .opcao {
+      margin: 8px 0;
+      display: block;
+    }
+    button#submitQuiz {
+      margin-top: 20px;
+      padding: 12px 25px;
+      font-size: 16px;
+      background-color: #1e90ff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button#submitQuiz:hover {
+      background-color: #006fd6;
+    }
+    #resultado {
+      margin-top: 25px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #1e90ff;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Quiz de Eletrônica</h1>
+  </header>
+
+  <main>
+    <form id="quizForm">
+      <div class="pergunta">
+        1. Qual componente é conhecido como "Coração" do temporizador 555?
+      </div>
+      <label class="opcao">
+        <input type="radio" name="q1" value="a" /> Resistor
+      </label>
+      <label class="opcao">
+        <input type="radio" name="q1" value="b" /> Capacitor
+      </label>
+      <label class="opcao">
+        <input type="radio" name="q1" value="c" /> Transistor
+      </label>
+      <label class="opcao">
+        <input type="radio" name="q1" value="d" /> Flip-flop (biestável)
+      </label>
+
+      <div class="pergunta">
+        2. Um filtro passa-baixa permite a passagem de:
+      </div>
+      <label class="opcao">
+        <input type="radio" name="q2" value="a" /> Frequências altas
+      </label>
+      <label class="opcao">
+        <input type="radio" name="q2" value="b" /> Frequências baixas
+      </label>
+      <label class="opcao">
+        <input type="radio" name="q2" value="c" /> Todas as frequências
+      </label>
+      <label class="opcao">
+        <input type="radio" name="q2" value="d" /> Nenhuma frequência
+      </label>
+
+      <div class="pergunta">
+        3. Qual destes circuitos é conhecido por gerar um sinal oscilante com a configuração de um multivibrador astável?
+      </div>
+      <label class="opcao">
+        <input type="radio" name="q3" value="a" /> Oscilador RC
+      </label>
+      <label class="opcao">
+        <input type="radio" name="q3" value="b" /> Oscilador de Relaxação com 555
+      </label>
+      <label class="opcao">
+        <input type="radio" name="q3" value="c" /> Amplificador operacional
+      </label>
+      <label class="opcao">
+        <input type="radio" name="q3" value="d" /> Filtro notch
+      </label>
+
+      <button type="submit" id="submitQuiz">Enviar Respostas</button>
+    </form>
+
+    <div id="resultado"></div>
+  </main>
+
+  <script>
+    const respostasCorretas = {
+      q1: 'd',
+      q2: 'b',
+      q3: 'b'
+    };
+
+    document.getElementById('quizForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      let pontos = 0;
+      const totalPerguntas = Object.keys(respostasCorretas).length;
+      const form = event.target;
+
+      // Verifica se todas perguntas foram respondidas
+      for (let q in respostasCorretas) {
+        if (!form[q].value) {
+          alert('Por favor, responda todas as perguntas.');
+          return;
+        }
+      }
+
+      // Checa respostas
+      for (let q in respostasCorretas) {
+        if (form[q].value === respostasCorretas[q]) {
+          pontos++;
+        }
+      }
+
+      const resultado = document.getElementById('resultado');
+      resultado.textContent = `Você acertou ${pontos} de ${totalPerguntas} perguntas.`;
+
+      // Mensagem extra
+      if (pontos === totalPerguntas) {
+        resultado.textContent += ' Parabéns! Você é um expert em eletrônica!';
+      } else if (pontos >= totalPerguntas / 2) {
+        resultado.textContent += ' Muito bom! Continue estudando.';
+      } else {
+        resultado.textContent += ' Que tal estudar mais um pouco?';
+      }
+    });
+  </script>
+</body>
+</html>
 
