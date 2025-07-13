@@ -1,31 +1,35 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" >
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Quiz | Eletrônica do Seu Zé</title>
   <link rel="stylesheet" href="css/style.css" />
   <style>
-    main {
+    main.quiz-container {
       max-width: 600px;
       margin: 40px auto;
-      background: #fff;
-      padding: 20px;
+      background: white;
+      padding: 20px 30px;
       border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    h2 {
-      margin-bottom: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.15);
     }
     .pergunta {
-      margin-bottom: 15px;
       font-weight: bold;
+      margin-bottom: 15px;
+      font-size: 18px;
     }
     .opcao {
-      margin: 8px 0;
       display: block;
+      margin: 8px 0;
+      cursor: pointer;
+      font-size: 16px;
     }
-    button#submitQuiz {
+    .opcao input {
+      margin-right: 10px;
+      cursor: pointer;
+    }
+    button#btnProximo {
       margin-top: 20px;
       padding: 12px 25px;
       font-size: 16px;
@@ -36,13 +40,17 @@
       cursor: pointer;
       transition: background-color 0.3s ease;
     }
-    button#submitQuiz:hover {
+    button#btnProximo:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+    button#btnProximo:hover:not(:disabled) {
       background-color: #006fd6;
     }
     #resultado {
-      margin-top: 25px;
-      font-size: 20px;
+      margin-top: 20px;
       font-weight: bold;
+      font-size: 20px;
       color: #1e90ff;
     }
   </style>
@@ -52,104 +60,125 @@
     <h1>Quiz de Eletrônica</h1>
   </header>
 
-  <main>
-    <form id="quizForm">
-      <div class="pergunta">
-        1. Qual componente é conhecido como "Coração" do temporizador 555?
-      </div>
-      <label class="opcao">
-        <input type="radio" name="q1" value="a" /> Resistor
-      </label>
-      <label class="opcao">
-        <input type="radio" name="q1" value="b" /> Capacitor
-      </label>
-      <label class="opcao">
-        <input type="radio" name="q1" value="c" /> Transistor
-      </label>
-      <label class="opcao">
-        <input type="radio" name="q1" value="d" /> Flip-flop (biestável)
-      </label>
-
-      <div class="pergunta">
-        2. Um filtro passa-baixa permite a passagem de:
-      </div>
-      <label class="opcao">
-        <input type="radio" name="q2" value="a" /> Frequências altas
-      </label>
-      <label class="opcao">
-        <input type="radio" name="q2" value="b" /> Frequências baixas
-      </label>
-      <label class="opcao">
-        <input type="radio" name="q2" value="c" /> Todas as frequências
-      </label>
-      <label class="opcao">
-        <input type="radio" name="q2" value="d" /> Nenhuma frequência
-      </label>
-
-      <div class="pergunta">
-        3. Qual destes circuitos é conhecido por gerar um sinal oscilante com a configuração de um multivibrador astável?
-      </div>
-      <label class="opcao">
-        <input type="radio" name="q3" value="a" /> Oscilador RC
-      </label>
-      <label class="opcao">
-        <input type="radio" name="q3" value="b" /> Oscilador de Relaxação com 555
-      </label>
-      <label class="opcao">
-        <input type="radio" name="q3" value="c" /> Amplificador operacional
-      </label>
-      <label class="opcao">
-        <input type="radio" name="q3" value="d" /> Filtro notch
-      </label>
-
-      <button type="submit" id="submitQuiz">Enviar Respostas</button>
-    </form>
-
+  <main class="quiz-container">
+    <div id="quizPergunta">
+      <!-- Pergunta e opções aparecem aqui -->
+    </div>
+    <button id="btnProximo" disabled>Próximo</button>
     <div id="resultado"></div>
   </main>
 
+  <div class="voltar-container">
+    <button onclick="location.href='index.html'">← Voltar ao Menu</button>
+  </div>
+
   <script>
-    const respostasCorretas = {
-      q1: 'd',
-      q2: 'b',
-      q3: 'b'
-    };
+    const perguntas = [
+      {
+        pergunta: "1. Qual componente é conhecido como 'Coração' do temporizador 555?",
+        opcoes: {
+          a: "Resistor",
+          b: "Capacitor",
+          c: "Transistor",
+          d: "Flip-flop (biestável)"
+        },
+        respostaCorreta: "d"
+      },
+      {
+        pergunta: "2. Um filtro passa-baixa permite a passagem de:",
+        opcoes: {
+          a: "Frequências altas",
+          b: "Frequências baixas",
+          c: "Todas as frequências",
+          d: "Nenhuma frequência"
+        },
+        respostaCorreta: "b"
+      },
+      {
+        pergunta: "3. Qual destes circuitos é conhecido por gerar um sinal oscilante com a configuração de um multivibrador astável?",
+        opcoes: {
+          a: "Oscilador RC",
+          b: "Oscilador de Relaxação com 555",
+          c: "Amplificador operacional",
+          d: "Filtro notch"
+        },
+        respostaCorreta: "b"
+      }
+    ];
 
-    document.getElementById('quizForm').addEventListener('submit', function(event) {
-      event.preventDefault();
+    let indiceAtual = 0;
+    let respostasUsuario = {};
 
-      let pontos = 0;
-      const totalPerguntas = Object.keys(respostasCorretas).length;
-      const form = event.target;
+    const quizPerguntaEl = document.getElementById("quizPergunta");
+    const btnProximo = document.getElementById("btnProximo");
+    const resultadoEl = document.getElementById("resultado");
 
-      // Verifica se todas perguntas foram respondidas
-      for (let q in respostasCorretas) {
-        if (!form[q].value) {
-          alert('Por favor, responda todas as perguntas.');
-          return;
-        }
+    function mostrarPergunta(indice) {
+      resultadoEl.textContent = "";
+      btnProximo.disabled = true;
+
+      const p = perguntas[indice];
+      let html = `<div class="pergunta">${p.pergunta}</div>`;
+
+      for (const [key, valor] of Object.entries(p.opcoes)) {
+        html += `
+          <label class="opcao">
+            <input type="radio" name="opcao" value="${key}" />
+            ${valor}
+          </label>
+        `;
       }
 
-      // Checa respostas
-      for (let q in respostasCorretas) {
-        if (form[q].value === respostasCorretas[q]) {
-          pontos++;
-        }
-      }
+      quizPerguntaEl.innerHTML = html;
 
-      const resultado = document.getElementById('resultado');
-      resultado.textContent = `Você acertou ${pontos} de ${totalPerguntas} perguntas.`;
+      // Adiciona evento para habilitar botão ao escolher resposta
+      const radios = quizPerguntaEl.querySelectorAll('input[type="radio"]');
+      radios.forEach(radio => {
+        radio.addEventListener('change', () => {
+          btnProximo.disabled = false;
+        });
+      });
+    }
 
-      // Mensagem extra
-      if (pontos === totalPerguntas) {
-        resultado.textContent += ' Parabéns! Você é um expert em eletrônica!';
-      } else if (pontos >= totalPerguntas / 2) {
-        resultado.textContent += ' Muito bom! Continue estudando.';
+    btnProximo.addEventListener('click', () => {
+      // Salva resposta
+      const selecionado = quizPerguntaEl.querySelector('input[type="radio"]:checked');
+      if (!selecionado) return;
+
+      respostasUsuario[indiceAtual] = selecionado.value;
+      indiceAtual++;
+
+      if (indiceAtual < perguntas.length) {
+        mostrarPergunta(indiceAtual);
       } else {
-        resultado.textContent += ' Que tal estudar mais um pouco?';
+        mostrarResultado();
       }
     });
+
+    function mostrarResultado() {
+      quizPerguntaEl.innerHTML = "";
+      btnProximo.style.display = "none";
+
+      let acertos = 0;
+      perguntas.forEach((p, i) => {
+        if (respostasUsuario[i] === p.respostaCorreta) {
+          acertos++;
+        }
+      });
+
+      resultadoEl.textContent = `Você acertou ${acertos} de ${perguntas.length} perguntas.`;
+
+      if (acertos === perguntas.length) {
+        resultadoEl.textContent += " Parabéns! Você é um expert em eletrônica!";
+      } else if (acertos >= perguntas.length / 2) {
+        resultadoEl.textContent += " Muito bom! Continue estudando.";
+      } else {
+        resultadoEl.textContent += " Que tal estudar mais um pouco?";
+      }
+    }
+
+    // Inicializa quiz
+    mostrarPergunta(indiceAtual);
   </script>
 </body>
 </html>
-
