@@ -1,184 +1,27 @@
 <!DOCTYPE html>
-<html lang="pt-BR" >
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Quiz | Eletrônica do Seu Zé</title>
   <link rel="stylesheet" href="css/style.css" />
-  <style>
-    main.quiz-container {
-      max-width: 600px;
-      margin: 40px auto;
-      background: white;
-      padding: 20px 30px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.15);
-    }
-    .pergunta {
-      font-weight: bold;
-      margin-bottom: 15px;
-      font-size: 18px;
-    }
-    .opcao {
-      display: block;
-      margin: 8px 0;
-      cursor: pointer;
-      font-size: 16px;
-    }
-    .opcao input {
-      margin-right: 10px;
-      cursor: pointer;
-    }
-    button#btnProximo {
-      margin-top: 20px;
-      padding: 12px 25px;
-      font-size: 16px;
-      background-color: #1e90ff;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-    button#btnProximo:disabled {
-      background-color: #ccc;
-      cursor: not-allowed;
-    }
-    button#btnProximo:hover:not(:disabled) {
-      background-color: #006fd6;
-    }
-    #resultado {
-      margin-top: 20px;
-      font-weight: bold;
-      font-size: 20px;
-      color: #1e90ff;
-    }
-  </style>
 </head>
 <body>
   <header>
-    <h1>Quiz de Eletrônica</h1>
+    Quiz
   </header>
 
-  <main class="quiz-container">
-    <div id="quizPergunta">
-      <!-- Pergunta e opções aparecem aqui -->
+  <main class="quiz-container" aria-live="polite">
+    <div id="quiz-content">
+      <!-- Perguntas e opções aparecerão aqui -->
     </div>
-    <button id="btnProximo" disabled>Próximo</button>
-    <div id="resultado"></div>
+    <button id="btn-confirmar" disabled>Confirmar</button>
   </main>
 
   <div class="voltar-container">
     <button onclick="location.href='index.html'">← Voltar ao Menu</button>
   </div>
 
-  <script>
-    const perguntas = [
-      {
-        pergunta: "1. Qual componente é conhecido como 'Coração' do temporizador 555?",
-        opcoes: {
-          a: "Resistor",
-          b: "Capacitor",
-          c: "Transistor",
-          d: "Flip-flop (biestável)"
-        },
-        respostaCorreta: "d"
-      },
-      {
-        pergunta: "2. Um filtro passa-baixa permite a passagem de:",
-        opcoes: {
-          a: "Frequências altas",
-          b: "Frequências baixas",
-          c: "Todas as frequências",
-          d: "Nenhuma frequência"
-        },
-        respostaCorreta: "b"
-      },
-      {
-        pergunta: "3. Qual destes circuitos é conhecido por gerar um sinal oscilante com a configuração de um multivibrador astável?",
-        opcoes: {
-          a: "Oscilador RC",
-          b: "Oscilador de Relaxação com 555",
-          c: "Amplificador operacional",
-          d: "Filtro notch"
-        },
-        respostaCorreta: "b"
-      }
-    ];
-
-    let indiceAtual = 0;
-    let respostasUsuario = {};
-
-    const quizPerguntaEl = document.getElementById("quizPergunta");
-    const btnProximo = document.getElementById("btnProximo");
-    const resultadoEl = document.getElementById("resultado");
-
-    function mostrarPergunta(indice) {
-      resultadoEl.textContent = "";
-      btnProximo.disabled = true;
-
-      const p = perguntas[indice];
-      let html = `<div class="pergunta">${p.pergunta}</div>`;
-
-      for (const [key, valor] of Object.entries(p.opcoes)) {
-        html += `
-          <label class="opcao">
-            <input type="radio" name="opcao" value="${key}" />
-            ${valor}
-          </label>
-        `;
-      }
-
-      quizPerguntaEl.innerHTML = html;
-
-      // Adiciona evento para habilitar botão ao escolher resposta
-      const radios = quizPerguntaEl.querySelectorAll('input[type="radio"]');
-      radios.forEach(radio => {
-        radio.addEventListener('change', () => {
-          btnProximo.disabled = false;
-        });
-      });
-    }
-
-    btnProximo.addEventListener('click', () => {
-      // Salva resposta
-      const selecionado = quizPerguntaEl.querySelector('input[type="radio"]:checked');
-      if (!selecionado) return;
-
-      respostasUsuario[indiceAtual] = selecionado.value;
-      indiceAtual++;
-
-      if (indiceAtual < perguntas.length) {
-        mostrarPergunta(indiceAtual);
-      } else {
-        mostrarResultado();
-      }
-    });
-
-    function mostrarResultado() {
-      quizPerguntaEl.innerHTML = "";
-      btnProximo.style.display = "none";
-
-      let acertos = 0;
-      perguntas.forEach((p, i) => {
-        if (respostasUsuario[i] === p.respostaCorreta) {
-          acertos++;
-        }
-      });
-
-      resultadoEl.textContent = `Você acertou ${acertos} de ${perguntas.length} perguntas.`;
-
-      if (acertos === perguntas.length) {
-        resultadoEl.textContent += " Parabéns! Você é um expert em eletrônica!";
-      } else if (acertos >= perguntas.length / 2) {
-        resultadoEl.textContent += " Muito bom! Continue estudando.";
-      } else {
-        resultadoEl.textContent += " Que tal estudar mais um pouco?";
-      }
-    }
-
-    // Inicializa quiz
-    mostrarPergunta(indiceAtual);
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
