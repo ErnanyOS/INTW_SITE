@@ -1,1 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Circuitos | Eletrônica do Seu Zé</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    main.grid {
+      max-width: 960px;
+      margin: 40px auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 20px;
+      padding: 0 20px 40px;
+    }
+
+    .circuito {
+      background: white;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      cursor: pointer;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease;
+      padding: 10px;
+    }
+
+    .circuito:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+
+    .circuito .icon img {
+      max-width: 100%;
+      max-height: 140px;
+      object-fit: contain;
+      margin-bottom: 8px;
+    }
+
+    .circuito .nome {
+      font-weight: 600;
+      font-size: 16px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Lista de Circuitos</h1>
+  </header>
+
+  <main class="grid">
+    <div class="circuito" onclick="mostrarInfo('Multivibrador Astável (555)')">
+      <div class="icon"><img src="imagens/astavel_555.png" alt="Multivibrador Astável (555)" /></div>
+      <div class="nome">Multivibrador Astável (555)</div>
+    </div>
+
+    <div class="circuito" onclick="mostrarInfo('Multivibrador Monostável (555)')">
+      <div class="icon"><img src="imagens/monostavel_555.png" alt="Multivibrador Monostável (555)" /></div>
+      <div class="nome">Multivibrador Monostável (555)</div>
+    </div>
+
+    <div class="circuito" onclick="mostrarInfo('Multivibrador Bistável (555)')">
+      <div class="icon"><img src="imagens/bistavel_555.png" alt="Multivibrador Bistável (555)" /></div>
+      <div class="nome">Multivibrador Bistável (555)</div>
+    </div>
+
+    <div class="circuito" onclick="mostrarInfo('Ponte de Wheatstone')">
+      <div class="icon"><img src="imagens/wheatstone.png" alt="Ponte de Wheatstone" /></div>
+      <div class="nome">Ponte de Wheatstone</div>
+    </div>
+
+    <div class="circuito" onclick="mostrarInfo('Ponte Dupla de Kelvin')">
+      <div class="icon"><img src="imagens/ponte_kelvin.jpg" alt="Ponte Dupla de Kelvin" /></div>
+      <div class="nome">Ponte Dupla de Kelvin</div>
+    </div>
+
+    <div class="circuito" onclick="mostrarInfo('Filtro Passa-Baixa')">
+      <div class="icon"><img src="imagens/passa_baixa.png" alt="Filtro Passa-Baixa" /></div>
+      <div class="nome">Filtro Passa-Baixa</div>
+    </div>
+
+    <div class="circuito" onclick="mostrarInfo('Filtro Passa-Alta')">
+      <div class="icon"><img src="imagens/passa_alta.png" alt="Filtro Passa-Alta" /></div>
+      <div class="nome">Filtro Passa-Alta</div>
+    </div>
+
+    <div class="circuito" onclick="mostrarInfo('Filtro Passa-Banda')">
+      <div class="icon"><img src="imagens/passa_banda.png" alt="Filtro Passa-Banda" /></div>
+      <div class="nome">Filtro Passa-Banda</div>
+    </div>
+
+    <div class="circuito" onclick="mostrarInfo('Filtro Notch (Rejeita-Banda)')">
+      <div class="icon"><img src="imagens/notch.png" alt="Filtro Notch (Rejeita-Banda)" /></div>
+      <div class="nome">Filtro Notch (Rejeita-Banda)</div>
+    </div>
+
+    <div class="circuito" onclick="mostrarInfo('Oscilador de Relaxação')">
+      <div class="icon"><img src="imagens/oscilador_relaxacao.png" alt="Oscilador de Relaxação" /></div>
+      <div class="nome">Oscilador de Relaxação</div>
+    </div>
+
+    <div class="circuito" onclick="mostrarInfo('Circuito de Chua (Caótico)')">
+      <div class="icon"><img src="imagens/chua.png" alt="Circuito de Chua (Caótico)" /></div>
+      <div class="nome">Circuito de Chua (Caótico)</div>
+    </div>
+
+    <div class="circuito" onclick="mostrarInfo('Fonte Regulada com LM317')">
+      <div class="icon"><img src="imagens/lm317.png" alt="Fonte Regulada com LM317" /></div>
+      <div class="nome">Fonte Regulada com LM317</div>
+    </div>
+
+    <div class="circuito" onclick="mostrarInfo('Amp Op Inversor')">
+      <div class="icon"><img src="imagens/amp_inv.png" alt="Amp Op Inversor" /></div>
+      <div class="nome">Amp Op Inversor</div>
+    </div>
+
+    <div class="circuito" onclick="mostrarInfo('Amp Op Não Inversor')">
+      <div class="icon"><img src="imagens/amp_nao_inv.png" alt="Amp Op Não Inversor" /></div>
+      <div class="nome">Amp Op Não Inversor</div>
+    </div>
+  </main>
+
+  <script>
+    function mostrarInfo(nome) {
+      alert("Você clicou no circuito: " + nome);
+      // Futuramente, pode redirecionar para página específica, ex:
+      // window.location.href = "circuitos/" + nome.replace(/\s+/g, '_').toLowerCase() + ".html";
+    }
+  </script>
+</body>
+</html>
 
