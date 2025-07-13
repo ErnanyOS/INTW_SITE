@@ -6,16 +6,18 @@
   <title>Quiz | Eletrônica do Seu Zé</title>
   <link rel="stylesheet" href="css/style.css" />
 </head>
-<body>
-  <header>Quiz</header>
+<body style="background: url('imagens/plano_de_fundo.png') no-repeat center center fixed; background-size: cover;">
+  <header style="background-color: white; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.15); max-width: 1000px; margin: 20px auto; padding: 30px 30px; text-align: center; font-family: 'Fredoka One', cursive; font-size: 3.5rem; font-weight: 700; color: #1e90ff; letter-spacing: 2px;">
+    Quiz
+  </header>
 
-  <main class="quiz-container" aria-live="polite">
+  <main class="quiz-container" aria-live="polite" style="background-color: white; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.15); max-width: 600px; margin: 20px auto; padding: 30px;">
     <div id="quiz-content"></div>
-    <button id="btn-confirmar" disabled>Confirmar</button>
+    <button id="btn-confirmar" disabled style="background-color: #1e90ff; color: white; border: none; padding: 16px 26px; font-size: 1.25rem; border-radius: 12px; cursor: pointer; margin-top: 20px;">Confirmar</button>
   </main>
 
-  <div class="voltar-container">
-    <button onclick="location.href='index.html'">&#8592; Voltar ao Menu</button>
+  <div class="voltar-container" style="max-width: 600px; margin: 0 auto 40px; text-align: left;">
+    <button onclick="location.href='index.html'" style="padding: 14px 22px; font-size: 1.1rem; background-color: #f0f0f0; border: 1px solid #ccc; border-radius: 10px; cursor: pointer;">← Voltar ao Menu</button>
   </div>
 
   <script src="script.js"></script>
