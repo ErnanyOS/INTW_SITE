@@ -5,185 +5,92 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Circuitos | Eletrônica do Seu Zé</title>
   <link rel="stylesheet" href="css/style.css" />
-  <style>
-    main.grid {
-      max-width: 1000px;
-      margin: 40px auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
-      gap: 25px;
-      padding: 0 20px 40px;
-    }
-
-    .circuito {
-      position: relative;
-      background: white;
-      border-radius: 12px;
-      border: 1px solid #ddd;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      text-align: center;
-      cursor: pointer;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-      padding: 15px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      overflow: hidden;
-    }
-
-    .circuito:hover {
-      transform: scale(1.05);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-    }
-
-    .circuito img {
-      max-width: 100%;
-      max-height: 140px;
-      object-fit: contain;
-      margin-bottom: 12px;
-      pointer-events: none;
-    }
-
-    .circuito p {
-      font-weight: 700;
-      color: #222;
-      font-size: 1rem;
-      margin: 0;
-      user-select: none;
-    }
-
-    /* Camada com explicação que aparece ao hover */
-    .circuito .info {
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background-color: rgba(30, 144, 255, 0.9);
-      color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 15px;
-      text-align: center;
-      font-size: 0.95rem;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-      pointer-events: none;
-      border-radius: 12px;
-      user-select: text;
-    }
-
-    .circuito:hover .info {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    /* Botão voltar */
-    .voltar-container {
-      max-width: 1000px;
-      margin: 0 auto 40px;
-      padding: 0 20px;
-      text-align: left;
-    }
-
-    .voltar-container button {
-      padding: 10px 18px;
-      font-size: 1rem;
-      background-color: #f0f0f0;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    .voltar-container button:hover {
-      background-color: #ddd;
-    }
-  </style>
 </head>
 <body>
   <header>
-    <h1>Lista de Circuitos</h1>
+    Lista de Circuitos
   </header>
 
-  <main class="grid">
-    <div class="circuito">
+  <main class="grid" aria-label="Lista de circuitos">
+    <div class="circuito" tabindex="0">
       <img src="imagens/astavel_555.png" alt="Multivibrador Astável (555)" />
       <p>Multivibrador Astável (555)</p>
       <div class="info">Gera um sinal de onda quadrada contínua usado para temporização e oscilação.</div>
     </div>
 
-    <div class="circuito">
+    <div class="circuito" tabindex="0">
       <img src="imagens/monostavel_555.png" alt="Multivibrador Monostável (555)" />
       <p>Multivibrador Monostável (555)</p>
       <div class="info">Produz um pulso único de duração fixa após ser acionado.</div>
     </div>
 
-    <div class="circuito">
+    <div class="circuito" tabindex="0">
       <img src="imagens/bistavel_555.png" alt="Multivibrador Bistável (555)" />
       <p>Multivibrador Bistável (555)</p>
       <div class="info">Possui dois estados estáveis e alterna entre eles mediante um gatilho.</div>
     </div>
 
-    <div class="circuito">
+    <div class="circuito" tabindex="0">
       <img src="imagens/wheatstone.png" alt="Ponte de Wheatstone" />
       <p>Ponte de Wheatstone</p>
       <div class="info">Circuito para medir resistências desconhecidas com alta precisão.</div>
     </div>
 
-    <div class="circuito">
+    <div class="circuito" tabindex="0">
       <img src="imagens/ponte_kelvin.jpg" alt="Ponte Dupla de Kelvin" />
       <p>Ponte Dupla de Kelvin</p>
       <div class="info">Usada para medir baixas resistências com eliminação de erros causados por resistências de contato.</div>
     </div>
 
-    <div class="circuito">
+    <div class="circuito" tabindex="0">
       <img src="imagens/passa_baixa.png" alt="Filtro Passa-Baixa" />
       <p>Filtro Passa-Baixa</p>
       <div class="info">Permite passagem de frequências baixas e atenua frequências altas.</div>
     </div>
 
-    <div class="circuito">
+    <div class="circuito" tabindex="0">
       <img src="imagens/passa_alta.png" alt="Filtro Passa-Alta" />
       <p>Filtro Passa-Alta</p>
       <div class="info">Permite passagem de frequências altas e atenua frequências baixas.</div>
     </div>
 
-    <div class="circuito">
+    <div class="circuito" tabindex="0">
       <img src="imagens/passa_banda.png" alt="Filtro Passa-Banda" />
       <p>Filtro Passa-Banda</p>
       <div class="info">Permite passagem de um intervalo específico de frequências, rejeitando as demais.</div>
     </div>
 
-    <div class="circuito">
+    <div class="circuito" tabindex="0">
       <img src="imagens/notch.png" alt="Filtro Notch (Rejeita-Banda)" />
       <p>Filtro Notch (Rejeita-Banda)</p>
       <div class="info">Rejeita uma faixa estreita de frequências, deixando passar as demais.</div>
     </div>
 
-    <div class="circuito">
+    <div class="circuito" tabindex="0">
       <img src="imagens/oscilador_relaxacao.png" alt="Oscilador de Relaxação" />
       <p>Oscilador de Relaxação</p>
       <div class="info">Gera sinais periódicos não senoidais, usados em temporizadores e piscadores.</div>
     </div>
 
-    <div class="circuito">
+    <div class="circuito" tabindex="0">
       <img src="imagens/chua.png" alt="Circuito de Chua (Caótico)" />
       <p>Circuito de Chua (Caótico)</p>
       <div class="info">Exemplo clássico de circuito não-linear que gera comportamento caótico.</div>
     </div>
 
-    <div class="circuito">
+    <div class="circuito" tabindex="0">
       <img src="imagens/lm317.png" alt="Fonte Regulada com LM317" />
       <p>Fonte Regulada com LM317</p>
       <div class="info">Fonte de tensão ajustável que mantém a saída constante mesmo com variações na carga.</div>
     </div>
 
-    <div class="circuito">
+    <div class="circuito" tabindex="0">
       <img src="imagens/amp_inv.png" alt="Amp Op Inversor" />
       <p>Amp Op Inversor</p>
       <div class="info">Amplificador operacional que inverte o sinal de entrada e amplifica sua amplitude.</div>
     </div>
 
-    <div class="circuito">
+    <div class="circuito" tabindex="0">
       <img src="imagens/amp_nao_inv.png" alt="Amp Op Não Inversor" />
       <p>Amp Op Não Inversor</p>
       <div class="info">Amplificador operacional que mantém a fase do sinal de entrada, amplificando-o.</div>
